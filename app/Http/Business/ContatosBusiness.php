@@ -44,8 +44,8 @@ class ContatosBusiness
         $contato = $this->repository->create($dados);
 
         // Se coordenadas foram encontradas, armazena na tabela google
-        $google['contato_id'] = $contato->id;
         if (!empty($google)) {
+            $google['contato_id'] = $contato->id;
             $this->google->store($google);
         }
 
@@ -74,8 +74,8 @@ class ContatosBusiness
         $contato = $this->repository->update($dados);
 
         // Se coordenadas foram encontradas e o contato existir, atualiza na tabela google
-        $google['contato_id'] = $contato->id;
         if (!empty($google) && !empty($contato)) {
+            $google['contato_id'] = $contato->id;
             $this->google->update($google);
         }
 

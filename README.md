@@ -10,6 +10,8 @@ Aplicação web para gerenciamento de contatos, desenvolvida com Laravel 12 e La
 - Consulta de endereço por CEP (integração com ViaCEP)
 - Exclusão de conta com confirmação de senha
 - API RESTful com rotas protegidas
+- Cadastro de lista de contatos
+- Geolocalização do Google maps
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -83,18 +85,6 @@ MAIL_ENCRYPTION=null
 MAIL_FROM_ADDRESS=seu_email@example.com
 MAIL_FROM_NAME="${APP_NAME}"
 ```
-
-## 📮 Testando com Postman
-
-Utilize o Postman para testar as rotas da API:
-
-- **Registro:** `POST /api/usuario/cadastro`
-- **Login:** `POST /api/login`
-- **Logout:** `POST /api/logout` (necessita token)
-- **Consultar CEP:** `POST /api/cep` com body `{ "cep": "83045100" }`
-- **Recuperar Senha:** `POST /api/forgot-password` com body `{ "email": "seu_email@example.com" }`
-- **Redefinir Senha:** `POST /api/reset-password` com token + nova senha
-- **Excluir Conta:** `DELETE /api/usuario/deletar-conta` com body `{ "password": "sua_senha" }` (necessita token)
 
 ## ✅ Requisitos
 

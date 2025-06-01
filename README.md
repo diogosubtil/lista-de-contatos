@@ -1,6 +1,6 @@
 # 📇 Lista de Contatos
 
-Aplicação web para gerenciamento de contatos, desenvolvida com Laravel 12 e Laravel Sanctum, permitindo cadastro, autenticação e operações CRUD de usuários.
+API para gerenciamento de contatos, desenvolvida com Laravel 12 e Laravel Sanctum, permitindo cadastro, autenticação e operações CRUD de usuários e contatos.
 
 ## 🚀 Funcionalidades
 
@@ -9,9 +9,10 @@ Aplicação web para gerenciamento de contatos, desenvolvida com Laravel 12 e La
 - Recuperação de senha por e-mail
 - Consulta de endereço por CEP (integração com ViaCEP)
 - Exclusão de conta com confirmação de senha
-- API RESTful com rotas protegidas
-- Cadastro de lista de contatos
+- Cadastro de contatos
 - Geolocalização do Google maps
+- API RESTful com rotas protegidas
+
 
 ## 🛠️ Tecnologias Utilizadas
 

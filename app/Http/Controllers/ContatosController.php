@@ -59,7 +59,6 @@ class ContatosController extends Controller
                 return response()->json([
                     'success' => false,
                     'message' => 'CPF ja cadastrado na sua lista de contatos.',
-                    'data' => $contato['erro_cpf']
                 ], 201);
             }
 

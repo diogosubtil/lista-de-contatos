@@ -34,7 +34,7 @@ class ContatosBusiness
 
         // Verifica se o CPF já existe para este usuário
         if (!empty($this->repository->find($dados['cpf'], $user->id))) {
-            return ['erro_cpf' => 'Este CPF já está vinculado a outro contato.'];
+            return ['erro_cpf' => true];
         }
 
         // Obtém coordenadas via Google

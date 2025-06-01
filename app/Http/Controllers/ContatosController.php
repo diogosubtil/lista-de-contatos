@@ -50,6 +50,36 @@ class ContatosController extends Controller
         }
     }
 
+    /**
+     * Cria um novo contato para o usuário autenticado.
+     *
+     * @param ContatoRequest $request Requisição contendo os dados do contato a ser criado.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @response 201 {
+     *   "success": true,
+     *   "message": "Contato criado com sucesso.",
+     *   "data": {
+     *     "id": 1,
+     *     "nome": "João da Silva",
+     *     "cpf": "12345678900",
+     *     "telefone": "(11) 91234-5678",
+     *     "email": "joao@email.com"
+     *   }
+     * }
+     *
+     * @response 201 scenario="CPF duplicado" {
+     *   "success": false,
+     *   "message": "CPF ja cadastrado na sua lista de contatos."
+     * }
+     *
+     * @response 500 scenario="Erro interno" {
+     *   "success": false,
+     *   "message": "Erro ao criar contato.",
+     *   "error": "Mensagem de exceção"
+     * }
+     */
     public function store(ContatoRequest $request)
     {
         try {
@@ -78,6 +108,41 @@ class ContatosController extends Controller
         }
     }
 
+    /**
+     * Atualiza um contato existente do usuário autenticado.
+     *
+     * @param ContatoRequest $request Requisição contendo os dados atualizados do contato.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @response 200 {
+     *   "success": true,
+     *   "message": "Contato atualizado com sucesso.",
+     *   "data": {
+     *     "id": 1,
+     *     "nome": "João Atualizado",
+     *     "cpf": "12345678900",
+     *     "telefone": "(11) 99876-5432",
+     *     "email": "joao.novo@email.com"
+     *   }
+     * }
+     *
+     * @response 200 scenario="Contato não encontrado" {
+     *   "success": false,
+     *   "message": "Contato não encontrado."
+     * }
+     *
+     * @response 200 scenario="CPF duplicado" {
+     *   "success": false,
+     *   "message": "CPF ja cadastrado na sua lista de contatos."
+     * }
+     *
+     * @response 500 scenario="Erro interno" {
+     *   "success": false,
+     *   "message": "Erro ao atualizar contato.",
+     *   "error": "Mensagem de exceção"
+     * }
+     */
     public function update(ContatoRequest $request)
     {
         try {
@@ -113,6 +178,29 @@ class ContatosController extends Controller
         }
     }
 
+    /**
+     * Remove um contato da lista do usuário autenticado.
+     *
+     * @param Request $request Requisição contendo o ID do contato a ser excluído.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @response 201 {
+     *   "success": true,
+     *   "message": "Contato excluido com sucesso."
+     * }
+     *
+     * @response 200 scenario="Contato não encontrado" {
+     *   "success": false,
+     *   "message": "Contato não encontrado."
+     * }
+     *
+     * @response 500 scenario="Erro interno" {
+     *   "success": false,
+     *   "message": "Erro ao criar contato.",
+     *   "error": "Mensagem de exceção"
+     * }
+     */
     public function destroy(Request $request)
     {
         try {

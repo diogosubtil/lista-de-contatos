@@ -14,10 +14,10 @@ class UsersRepository
      * Cria um novo usuário com os dados fornecidos, incluindo a criptografia da senha.
      *
      * @param  array  $dados
-     * @return \Illuminate\Database\Eloquent\Model
+     *
      */
-    public function create($dados){
-        $dados['password'] = bcrypt($dados['password']);
+    public function create($dados)
+    {
         return $this->model->create($dados);
     }
 
@@ -25,19 +25,22 @@ class UsersRepository
      * Remove um usuário com base no ID.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse|int
      *
      */
     public function destroy($id)
     {
-        try {
-            $user = $this->model->find($id);
-            if (!$user) {
-                throw new \Exception('Usuário não encontrado');
-            }
-            return $this->model->destroy($id);
-        } catch (\Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
-        }
+        return $this->model->destroy($id);
+    }
+
+
+    /**
+     * Busca o usuário com base no ID.
+     *
+     * @param  int  $id
+     *
+     */
+    public function find($id)
+    {
+        return $this->model->find($id);
     }
 }

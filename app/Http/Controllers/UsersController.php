@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Business\UsersBusiness;
 use App\Http\Requests\DeleteAccountRequest;
 use App\Http\Requests\UsersFormRequest;
-use App\Repository\UsersRepository;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class UsersController extends Controller
 {
-    private $repository;
+    private $business;
 
-    public function __construct(UsersRepository $repository)
+    public function __construct(UsersBusiness $business)
     {
-        $this->repository = $repository;
+        $this->business = $business;
     }
 
     /**
@@ -43,7 +42,7 @@ class UsersController extends Controller
     public function store(UsersFormRequest $request)
     {
         try {
-            $user = $this->repository->create($request->all());
+            $user = $this->business->create($request->all());
 
             return response()->json([
                 'success' => true,
@@ -84,13 +83,7 @@ class UsersController extends Controller
     public function deleteAccount(DeleteAccountRequest $request)
     {
         try {
-            $user = $request->user();
-
-            $this->repository->destroy($user->id);
-
-            Log::info("Conta excluída para o usuário ID {$user->id}");
-
-            $request->user()->currentAccessToken()->delete();
+            $this->business->destroy($request);
 
             return response()->json([
                 'success' => true,
